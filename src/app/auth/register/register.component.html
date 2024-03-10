@@ -1,0 +1,72 @@
+<div
+  id="container_login"
+  class="flex justify-center items-center h-screen bg-login"
+>
+  <div
+    class="flex flex-col justify-around items-center bg-white w-[350px] h-[400px] rounded-[50px] shadow-md shadow-gray-300"
+  >
+    <div id="logo_login" class="pt-5">
+      <img src="./../../../assets/images/pandas_logo.png" width="200px" />
+    </div>
+
+    <div id="input_form_login">
+      <input
+        id="username_login"
+        type="text"
+        (input)="usernameInputEvent($event)"
+        placeholder="Username"
+        class="flex flex-1 pl-5 pt-3 pr-3 pb-3 w-[260px] bg-[#e6e6e6] text-gray-400 rounded-full outline-none"
+      />
+      <input
+        id="password_login"
+        type="password"
+        (input)="passwordInputEvent($event)"
+        placeholder="Password"
+        class="flex pl-5 pt-3 pr-3 pb-3 mt-[12px] w-[260px] bg-[#e6e6e6] text-gray-400 rounded-full outline-none"
+      />
+      <div class="flex flex-row mt-3">
+        <input
+          id="password_confirm_login"
+          type="password"
+          placeholder="Confirm Password"
+          (input)="passwordConfirmInputEvent($event)"
+          class="flex pl-5 pt-3 pr-3 pb-3 w-[230px] bg-[#e6e6e6] text-gray-400 rounded-full outline-none"
+        />
+        <ng-container *ngIf="isButtonRegisterDisable; else blocked">
+          <button
+            [disabled]="isButtonRegisterDisable"
+            class="flex justify-center items-center bg-transparent ml-[-7px] disabled:bg-transparent disabled:text-gray-400 rounded-full w-[50px] hover:bg-[#e6e6e6]"
+          >
+            <mat-icon class="text-gray-400" fontIcon="block"></mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #blocked>
+          <button
+            class="flex justify-center items-center bg-transparent rounded-full ml-[-7px] w-[50px] outline-none"
+          >
+            <mat-icon class="text-gray-400" fontIcon="login"></mat-icon>
+          </button>
+        </ng-template>
+      </div>
+    </div>
+
+    <div>
+      <mat-progress-bar mode="buffer"></mat-progress-bar>
+    </div>
+
+    <div class="flex flex-col text-center items-center pb-3">
+      <div class="flex flex-row items-center text-[10px] pb-1">
+        <p class="uppercase mr-1">já tem conta?</p>
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+          ><p class="uppercase font-semibold">acessar</p></a
+        >
+      </div>
+      <div class="flex flex-row items-center text-[10px] pb-1">
+        <p class="uppercase mr-1">não lembra a senha?</p>
+        <a [routerLink]="['/recovery']" routerLinkActive="router-link-active"
+          ><p class="uppercase font-semibold">recuperar</p></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
